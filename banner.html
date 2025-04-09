@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTML5 Banner</title>
+<style>
+/* CSS Reset */
+* { margin: 0; padding: 0; border: 0; }
+ 
+/* Banner Container */
+#banner-container {
+    width: 300px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f7f7f7;
+    margin: 0 auto;
+    border: 0;
+}
+ 
+/* Main Content */
+#main-content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+ 
+#product-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: slideIn 1s forwards;
+}
+ 
+@keyframes slideIn {
+    from { transform: translate(-150%, calc(-50% - 15%)); }
+    to { transform: translate(-50%, calc(-50% - 15%)); }
+}
+ 
+/* Media Elements */
+.top-images-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;    
+    gap: 8px;
+    width: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+.banner-image {
+    
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 275px;
+    height: 450px;
+    object-fit: cover;
+    z-index: 0;
+    border-bottom-right-radius: 15px;
+    border: 0;
+    box-sizing: border-box;
+    outline: none;
+   
+    
+}
+
+.top-image-first {
+    position: absolute;
+    max-width: 200px;
+    left: 8px;
+    top: 15px;
+    
+    margin-top: 8px;
+    pointer-events: auto;
+    
+}
+
+.top-image-second {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    max-width: 100%;
+    
+ 
+    
+    
+
+    
+}
+
+
+
+
+#bg-image {
+   
+    z-index: 0;
+}
+
+#product-image {
+    z-index: 3;
+}
+
+
+ 
+
+
+
+ 
+@keyframes slideUpFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.left-column {
+    position: absolute;
+    bottom:10px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 200px;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.price-image {
+    max-width: 100%;
+    display: block;
+    transition: opacity 0.5s ease; /* smooth fade transition */
+}
+
+.left-column .hidden {
+    display: none;
+}
+
+@keyframes fadePrice {
+    0% {
+        opacity: 1; 
+    }
+    50% {
+        opacity: 1; 
+    }
+    50.1% {
+        opacity: 0; 
+        content: url("assets/Price.webp"); 
+    }
+    58.33% {
+        opacity: 0; 
+        content: url("assets/family-promise.png"); 
+    }
+    66.67% {
+        opacity: 1; 
+    }
+    100% {
+        opacity: 1; 
+    }
+}
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.left-image {
+    max-width: 100%;
+    display: block;
+}
+
+.left-text {
+    font-family: Arial, sans-serif;
+    padding-top: 4px;
+    font-size: 5px;
+    color:#00095B;
+    margin: 0;
+}
+ 
+.cta-group {
+    position: absolute;
+    bottom: 10px;
+    right: 0; 
+    padding-right: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    gap: 8px;
+    opacity: 1;
+    transform: none;
+    z-index: 4;
+}
+.cta-button {
+    padding: 8px 15px;
+    background: #066fef;
+    color: white;
+    border-radius: 25px;
+    font-family: Arial, sans-serif;
+    font-size: 7px;
+    cursor: pointer;
+    max-width: 80px;
+}
+ 
+.cta-icon {
+    max-width: 70px;
+    display: block;
+}
+</style>
+</head>
+<body>
+<div id="banner-container">
+    <div id="main-content">
+        <video class="banner-image" id="bg-video" autoplay muted loop playsinline>
+            <source src="assets/ford-clouds.mp4" type="video/mp4">
+        </video>
+
+        <div class="top-images-container">
+          
+                <img src="assets/blue-sky-offers.png" alt="" class="top-image-first">
+           
+           
+                <img src="assets/stacked-logo.webp" alt="" class="top-image-second">
+            
+            
+        </div>
+        
+        <img  id="product-image" src="assets/xlt.webp">
+        <div class="cta-group">
+            <img class="cta-icon" src="assets/ford-logow.webp" alt="">
+            <div class="cta-button">View Deals</div>
+        </div>
+
+        <div class="left-column">
+            <img src="assets/get-the-ford.png" alt="" class="left-image">
+            <img src="assets/Price.webp" alt="" class="left-image price-image">
+            <p class="left-text">FFS Finance South Africa (Pty) Ltd, trading as Ford Credit, is an Authorised <br>Financial Services Provider (FSP 31946) and Registered Credit Provider (NCRCP 72) </span></p>
+            
+        </div>
+    </div>
+</div>
+ 
+<script>
+// Wait for all assets to load
+window.addEventListener('load', initBanner);
+
+function initBanner() {
+    const banner = document.getElementById('banner-container');
+    banner.addEventListener('click', () => {
+        window.open('https://google.com', '_blank');
+    });
+
+    const images = document.querySelectorAll('.banner-image');
+    images[0].style.display = 'block';
+
+    // Image rotation logic
+    const priceImage = document.querySelector('.price-image');
+    const leftColumn = document.querySelector('.left-column');
+    const otherItems = leftColumn.querySelectorAll(':not(.price-image)'); // Select all except .price-image
+
+    const imageSequence = [
+        'assets/Price.webp',           // First image
+        'assets/get-the-ford.png', // Second image
+        'assets/family-promise.png' // Third image
+    ];
+    let currentIndex = 0;
+
+    function updateImage() {
+        // Fade out current image
+        priceImage.style.opacity = '0';
+
+        setTimeout(() => {
+            // Update to next image
+            currentIndex = (currentIndex + 1) % imageSequence.length; // Loop back to 0 after last image
+            priceImage.src = imageSequence[currentIndex];
+            priceImage.style.opacity = '1'; // Fade in new image
+
+            // Show/hide other items based on current image
+            if (currentIndex === 0) {
+                // When Price.webp is showing, make other items visible
+                otherItems.forEach(item => {
+                    item.classList.remove('hidden');
+                    setTimeout(() => {
+                        item.style.opacity = '1'; // Fade in
+                    }, 10); // Small delay to ensure display is set first
+                });
+            } else {
+                // When other images show, hide other items
+                otherItems.forEach(item => {
+                    item.style.opacity = '0'; // Fade out
+                    setTimeout(() => {
+                        item.classList.add('hidden'); // Hide completely after fade
+                    }, 500); // Match transition duration
+                });
+            }
+        }, 500); // Delay matches fade-out duration
+    }
+
+    // Start rotation after 6 seconds, then every 6 seconds
+    setTimeout(() => {
+        updateImage(); // First swap
+        setInterval(updateImage, 6000); // Repeat every 6 seconds
+    }, 6000);
+}
+</script>
+</body>
+</html>
+ 
